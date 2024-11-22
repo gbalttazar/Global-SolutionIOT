@@ -1,15 +1,3 @@
-# Plataforma de Monitoramento de Consumo e Geração de Energia Sustentável
-
-## Instruções para Replicar e Testar a Solução
-
-### 1. Configuração no Wokwi
-
-1. Abra o [Wokwi](https://wokwi.com/).
-2. Crie um novo projeto clicando em "New Project".
-3. No projeto, adicione um ESP32 e conecte os sensores de geração e consumo de energia aos pinos apropriados (pinos 34 e 35 no código).
-4. Copie o código abaixo e cole-o no editor de código do Wokwi:
-
-```cpp
 #include <WiFi.h>
 #include <PubSubClient.h>
 
@@ -106,62 +94,3 @@ void reconnect() {
     }
   }
 }
-
-
-### 2. Configuração no Node-RED
-
-1. Abra o [Node-RED].
-2. No painel do Node-RED, clique no menu no canto superior direito e selecione **Import**.
-3. Escolha a opção **Clipboard** e cole o código JSON abaixo:
-
-```json
-[
-    {
-        "id": "mqtt_in_generation",
-        "type": "mqtt in",
-        "z": "aadf4ee636b8c7a4",
-        "name": "MQTT Geração",
-        "topic": "iot/energy/generation",
-        "qos": "0",
-        "datatype": "auto",
-        "broker": "mqtt_broker",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 220,
-        "y": 180,
-        "wires": [
-            [
-                "gauge_generation",
-                "chart_energy"
-            ]
-        ]
-    },
-    {
-        "id": "mqtt_broker",
-        "type": "mqtt-broker",
-        "name": "Broker EMQX",
-        "broker": "broker.emqx.io",
-        "port": "1883",
-        "clientid": "node-red-client",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "autoUnsubscribe": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    }
-]
-
-
- 
