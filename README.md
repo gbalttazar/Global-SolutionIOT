@@ -1,3 +1,7 @@
+# Link Vídeo:
+https://youtu.be/KavJYvXXtiw
+
+
 # Plataforma de Monitoramento de Consumo e Geração de Energia Sustentável
 
 ## Instruções para Replicar e Testar a Solução
